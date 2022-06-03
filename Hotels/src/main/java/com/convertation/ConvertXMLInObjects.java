@@ -16,7 +16,7 @@ public class ConvertXMLInObjects extends DefaultHandler {
     Hotel hotel;
     Address address;
 
-    public List<Hotel> getResult(){
+    public List<Hotel> getResult() {
         return hotelsList;
     }
 
@@ -28,36 +28,40 @@ public class ConvertXMLInObjects extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
         currentValue.setLength(0);
-        if (qName.equalsIgnoreCase("Hotel")){
+        if (qName.equalsIgnoreCase("Hotel")) {
             hotel = new Hotel();
-            String price  = attributes.getValue("Price");
+            String price = attributes.getValue("Price");
             hotel.setPrice(price);
-        }
-        if (qName.equalsIgnoreCase("Address")){
-            address = new Address();
-            String addressLinew = attributes.getValue("AddressLine");
-            address.setAddressLine(addressLinew);
-            String city = attributes.getValue("City");
-            address.setCity(city);
-            String country = attributes.getValue("Country");
-            address.setCountry("Country");
-            String state = attributes.getValue("State");
-            address.setState(state);
         }
     }
 
     @Override
     public void endElement(String uri, String localName, String qName) {
-        if (qName.equalsIgnoreCase("Name")){
+        if (qName.equalsIgnoreCase("Name")) {
             hotel.setName(currentValue.toString());
         }
-        if (qName.equalsIgnoreCase("Address")){
+        if (qName.equalsIgnoreCase("AddressLine")) {
+            address.setAddressLine(currentValue.toString());
+        }
+        if (qName.equalsIgnoreCase("City")) {
+            address.setCity(currentValue.toString());
+        }
+        if (qName.equalsIgnoreCase("Country")) {
+            address.setCountry(currentValue.toString());
+        }
+        if (qName.equalsIgnoreCase("State")) {
+            address.setState(currentValue.toString());
+        }
+        if (qName.equalsIgnoreCase("Address")) {
             hotel.setAddress(address);
+        }
+        if (qName.equalsIgnoreCase("Hotel")) {
+            hotelsList.add(hotel);
         }
     }
 
     @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
+    public void characters(char[] ch, int start, int length) {
         currentValue.append(ch, start, length);
     }
 }
