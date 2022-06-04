@@ -12,8 +12,10 @@ import java.io.IOException;
 import java.util.List;
 
 public class RunReadXML {
-    public static void main(String[] args) {
+//    public static void main(String[] args) {
+    public List<Hotel> readingXml(){
         SAXParserFactory factory = SAXParserFactory.newInstance();
+        List<Hotel> result = null;
 
         try (InputStream in = getXMLFileAsStream()) {
             SAXParser saxParser = factory.newSAXParser();
@@ -22,13 +24,14 @@ public class RunReadXML {
 
             saxParser.parse(in, handler);
 
-            List<Hotel> result = handler.getResult();
-            result.forEach(System.out::println);
+            result = handler.getResult();
+//            result.forEach(System.out::println);
         } catch (IOException | ParserConfigurationException |
                  SAXException e) {
             e.printStackTrace();
         }
 
+        return result;
     }
 
     private static InputStream getXMLFileAsStream() {
