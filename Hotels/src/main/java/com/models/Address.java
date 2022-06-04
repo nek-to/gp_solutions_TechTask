@@ -37,4 +37,14 @@ public class Address {
     public void setState(String state) {
         State = state;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "AddressLine='" + AddressLine + '\'' +
+                ", City='" + City + '\'' +
+                ", Country='" + Country + '\'' +
+                ", State='" + State + '\'' +
+                '}';
+    }
 }

@@ -15,7 +15,6 @@ public class RunReadXML {
     public static void main(String[] args) {
         SAXParserFactory factory = SAXParserFactory.newInstance();
 
-//        try{
         try (InputStream in = getXMLFileAsStream()) {
             SAXParser saxParser = factory.newSAXParser();
 
@@ -24,7 +23,7 @@ public class RunReadXML {
             saxParser.parse(in, handler);
 
             List<Hotel> result = handler.getResult();
-            System.out.println(result);
+            result.forEach(System.out::println);
         } catch (IOException | ParserConfigurationException |
                  SAXException e) {
             e.printStackTrace();
@@ -33,6 +32,6 @@ public class RunReadXML {
     }
 
     private static InputStream getXMLFileAsStream() {
-        return RunReadXML.class.getClassLoader().getResourceAsStream("/Volumes/Macintosh_HDD/JAVA/GP_Solutions/Hotels/Hotels.xml");
+        return RunReadXML.class.getClassLoader().getResourceAsStream("Hotels.xml");
     }
 }

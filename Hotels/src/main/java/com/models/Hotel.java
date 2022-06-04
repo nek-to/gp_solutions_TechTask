@@ -4,7 +4,6 @@ public class Hotel {
     private String Name;
     private Address Address;
     private String Price;
-    private String text;
 
     public String getName() {
         return Name;
@@ -30,11 +29,12 @@ public class Hotel {
         Price = price;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "Name='" + Name + '\'' +
+                ", Address=" + Address +
+                ", Price='" + Price + '\'' +
+                '}';
     }
 }

@@ -2,9 +2,7 @@ package com.convertation;
 
 import com.models.Address;
 import com.models.Hotel;
-import com.models.Hotels;
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.ArrayList;
@@ -32,6 +30,9 @@ public class ConvertXMLInObjects extends DefaultHandler {
             hotel = new Hotel();
             String price = attributes.getValue("Price");
             hotel.setPrice(price);
+        }
+        if (qName.equalsIgnoreCase("Address")) {
+            address = new Address();
         }
     }
 
@@ -63,5 +64,8 @@ public class ConvertXMLInObjects extends DefaultHandler {
     @Override
     public void characters(char[] ch, int start, int length) {
         currentValue.append(ch, start, length);
+    }
+
+    public void endDocument() {
     }
 }

@@ -1,0 +1,5 @@
+com/models/Hotel.class
+com/models/Hotels.class
+com/convertation/RunReadXML.class
+com/convertation/ConvertXMLInObjects.class
+com/models/Address.class
