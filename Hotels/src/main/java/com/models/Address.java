@@ -1,50 +1,53 @@
 package com.models;
 
+/**
+ *   Main model from Hotels.xml
+ */
 public class Address {
-    private String AddressLine;
-    private String City;
-    private String Country;
-    private String State;
+    private String addressLine;
+    private String city;
+    private String country;
+    private String state;
 
     public String getAddressLine() {
-        return AddressLine;
-    }
-
-    public void setAddressLine(String addressLine) {
-        AddressLine = addressLine;
+        return addressLine;
     }
 
     public String getCity() {
-        return City;
-    }
-
-    public void setCity(String city) {
-        City = city;
+        return city;
     }
 
     public String getCountry() {
-        return Country;
-    }
-
-    public void setCountry(String country) {
-        Country = country;
+        return country;
     }
 
     public String getState() {
-        return State;
+        return state;
+    }
+
+    public void setAddressLine(String addressLine) {
+        this.addressLine = addressLine;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public void setState(String state) {
-        State = state;
+        this.state = state;
     }
 
     @Override
     public String toString() {
         return "Address{" +
-                "AddressLine='" + AddressLine + '\'' +
-                ", City='" + City + '\'' +
-                ", Country='" + Country + '\'' +
-                ", State='" + State + '\'' +
+                "addressLine='" + addressLine + '\'' +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                ", state='" + state + '\'' +
                 '}';
     }
 }

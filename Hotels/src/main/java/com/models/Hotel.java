@@ -1,40 +1,45 @@
 package com.models;
 
+
+/**
+ *   Main model from Hotels.xml
+ */
+
 public class Hotel {
-    private String Name;
-    private Address Address;
-    private String Price;
+    private String name;
+    private Address address;
+    private String price;
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public com.models.Address getAddress() {
-        return Address;
-    }
-
-    public void setAddress(com.models.Address address) {
-        Address = address;
+    public Address getAddress() {
+        return address;
     }
 
     public String getPrice() {
-        return Price;
+        return price;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public void setPrice(String price) {
-        Price = price;
+        this.price = price;
     }
 
     @Override
     public String toString() {
         return "Hotel{" +
-                "Name='" + Name + '\'' +
-                ", Address=" + Address +
-                ", Price='" + Price + '\'' +
+                "name='" + name + '\'' +
+                ", address=" + address +
+                ", price='" + price + '\'' +
                 '}';
     }
 }

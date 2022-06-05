@@ -7,15 +7,18 @@ import com.models.Hotel;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ *  Filtration class to filter converted xml Objects by conditions
+ *  Name = Hilton  &&  State = NY, New York -> NEW YORK (to bring to a single format (upper or lower case))
+ */
+
 public class Filtration {
-    public static void main(String[] args) {
+    public static List<Hotel> filtrationMethod(){
         ReadXML readXML = new ReadXML();
-        ConvertXMLInObjects convertXMLInObjects = new ConvertXMLInObjects();
         List<Hotel> listOfHotels = readXML.readingXml();
         List<Hotel> hotels = listOfHotels.stream().filter(hotel -> hotel.getName().contains("Hilton") &&
                 (hotel.getAddress().getState().toUpperCase().contains("NEW YORK") ||
                         hotel.getAddress().getState().toUpperCase().contains("NY"))).collect(Collectors.toList());
-//        System.out.println(hotels);
-        hotels.forEach(System.out::println);
+        return hotels;
     }
 }

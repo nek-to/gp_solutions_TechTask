@@ -8,6 +8,10 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Converting Hotels.xml into Objects using SAX method lib
+ */
+
 public class ConvertXMLInObjects extends DefaultHandler {
     private final StringBuilder currentValue = new StringBuilder();
     List<Hotel> hotelsList;
@@ -19,12 +23,12 @@ public class ConvertXMLInObjects extends DefaultHandler {
     }
 
     @Override
-    public void startDocument() {
+    public void startDocument() {   // Start Doc Override method
         hotelsList = new ArrayList<>();
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) {
+    public void startElement(String uri, String localName, String qName, Attributes attributes) {  //Entry point into every opening param
         currentValue.setLength(0);
         if (qName.equalsIgnoreCase("Hotel")) {
             hotel = new Hotel();
@@ -37,7 +41,7 @@ public class ConvertXMLInObjects extends DefaultHandler {
     }
 
     @Override
-    public void endElement(String uri, String localName, String qName) {
+    public void endElement(String uri, String localName, String qName) { // Ending point into every closed param
         if (qName.equalsIgnoreCase("Name")) {
             hotel.setName(currentValue.toString());
         }
@@ -62,10 +66,10 @@ public class ConvertXMLInObjects extends DefaultHandler {
     }
 
     @Override
-    public void characters(char[] ch, int start, int length) {
+    public void characters(char[] ch, int start, int length) { // Reading char in between starting and ending param
         currentValue.append(ch, start, length);
     }
 
-    public void endDocument() {
+    public void endDocument() {  // Ending point of Doc
     }
 }

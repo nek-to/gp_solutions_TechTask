@@ -1,5 +1,6 @@
-package com.convertation;
+package com.readingXml;
 
+import com.convertation.ConvertXMLInObjects;
 import com.models.Hotel;
 import org.xml.sax.SAXException;
 
@@ -11,8 +12,12 @@ import javax.xml.parsers.SAXParser;
 import java.io.IOException;
 import java.util.List;
 
-public class RunReadXML {
-//    public static void main(String[] args) {
+
+/**
+ *   Reader class by SAX lib
+ */
+
+public class ReadXML {
     public List<Hotel> readingXml(){
         SAXParserFactory factory = SAXParserFactory.newInstance();
         List<Hotel> result = null;
@@ -25,7 +30,6 @@ public class RunReadXML {
             saxParser.parse(in, handler);
 
             result = handler.getResult();
-//            result.forEach(System.out::println);
         } catch (IOException | ParserConfigurationException |
                  SAXException e) {
             e.printStackTrace();
@@ -35,6 +39,6 @@ public class RunReadXML {
     }
 
     private static InputStream getXMLFileAsStream() {
-        return RunReadXML.class.getClassLoader().getResourceAsStream("Hotels.xml");
+        return ReadXML.class.getClassLoader().getResourceAsStream("Hotels.xml");
     }
 }
